@@ -1,17 +1,34 @@
-import { Divider } from "@material-ui/core";
-import { TextField } from "@material-ui/core";
-import { Button } from "@material-ui/core";
-import { Box } from "@material-ui/core";
-const MainForm = ({ addTask, text, setText, day, setDay }) => {
-  const onSubmit = (e) => {
-    e.preventDefault();
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import TextField from "@mui/material/TextField";
+import { type FormEvent, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import type { Task } from "../../../types/tasks";
+
+type Props = {
+  addTask: (task: Task) => void;
+};
+
+function MainForm({ addTask }: Props) {
+  const [text, setText] = useState("");
+  const [day, setDay] = useState("");
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     if (!text || !day) {
       alert("Klaida!!!");
       return;
     }
 
-    addTask({ text, time: day, check: false });
+    addTask({
+      text,
+      time: day,
+      isChecked: false,
+      isCompleted: false,
+      id: uuidv4(),
+    });
 
     setText("");
     setDay("");
@@ -22,7 +39,7 @@ const MainForm = ({ addTask, text, setText, day, setDay }) => {
   return (
     <>
       <Divider />
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <Box mb={2}>
           <TextField
             id="standard-basic"
@@ -55,6 +72,6 @@ const MainForm = ({ addTask, text, setText, day, setDay }) => {
       <Divider />
     </>
   );
-};
+}
 
 export default MainForm;
