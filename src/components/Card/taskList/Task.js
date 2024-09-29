@@ -4,7 +4,7 @@ import { ListItemIcon } from "@material-ui/core";
 import { ListItemSecondaryAction } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
 
-import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
+// import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
 
 import { Checkbox } from "@material-ui/core";
 
@@ -38,7 +38,7 @@ const Task = ({ task, SetCheckBox, deleteTask }) => {
           edge="end"
           aria-label="delete"
         >
-          <DeleteForeverOutlinedIcon />
+          {/* <DeleteForeverOutlinedIcon /> */}
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>
